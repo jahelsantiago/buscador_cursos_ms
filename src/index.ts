@@ -3,8 +3,19 @@ import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { ApolloServer, gql } from "apollo-server";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
-import MyDatabase from "./MyDatabase";
-import knexConfig from "./conection";
+import MyDatabase from "./dataBaseManager";
+
+
+const knexConfig = {
+  client: 'mysql',
+  connection: {
+    host :  'host.docker.internal' ,
+    port : 3306,
+    user : 'admin',
+    password : '2022',
+    database : 'sia_asignaturas_db'
+  }
+};
 
 
 

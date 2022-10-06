@@ -1,4 +1,4 @@
-import MyDatabase from "./MyDatabase";
+import MyDatabase from "./dataBaseManager";
 
 type Asignatura = {
     codigo_asignatura: number;

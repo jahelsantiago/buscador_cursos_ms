@@ -1,4 +1,3 @@
-import { Asignaturas, Programas, Tipologias, Facultades, Sedes } from "./data"
 import { Asignatura, dataSources, Facultad, Programa, Sede, Tipologia } from "./typeDefs"
 
 const resolvers = {
