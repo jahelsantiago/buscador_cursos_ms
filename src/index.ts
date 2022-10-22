@@ -5,11 +5,13 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import MyDatabase from "./dataBaseManager";
 
+const ENVIROMENT = "devlopment"
 
+const host = ENVIROMENT === "devlopment" ? "localhost" : "host.docker.internal";
 const knexConfig = {
   client: 'mysql',
   connection: {
-    host :  'host.docker.internal' ,
+    host :  host,
     port : 3306,
     user : 'admin',
     password : '2022',
