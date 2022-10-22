@@ -52,6 +52,7 @@ import { gql } from 'apollo-server'
     tipologias: [Tipologia]
     tipologia(id_tipologia: Int!): Tipologia
     prerequisito(codigo_asignatura: Int!): [Int]
+    asignaturas_habilitadas(codigo_asignatura: Int!): [Int] 
     prerequisitos: [Prerequisito]
   }
 `

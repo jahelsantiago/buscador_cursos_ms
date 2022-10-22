@@ -1,5 +1,5 @@
 import { SQLDataSource } from "datasource-sql";
-import { Tipologia } from "./typeDefs";
+
 
 const MINUTE = 60 * 1000;
 
@@ -80,11 +80,25 @@ export default class MyDatabase extends SQLDataSource {
     prerequisitos.forEach((prerequisito) => {
       codes.push(prerequisito.codigo_asignatura_prerequisito);
     });
-    console.log(codes);
-
     return codes;
   }
+
+  // retorna una lista con las materias que abre una materia 
+  async getAsignaturasHabilitadas(codigo_asignatura_prerequisito: number) {
+      const habilitadas = await this.knex
+        .select("*")
+        .from("Prerequisito")
+        .where({ codigo_asignatura_prerequisito });
+      //get the codes of the prerequisitos
+      const codes: Number[] = [];
+      habilitadas.forEach((habilitada) => {
+        codes.push(habilitada.codigo_asignatura);
+      });
+      return codes;
+    }
 }
+
+
 
 // Language: typescript
 // Path: src\MyDatabase.ts

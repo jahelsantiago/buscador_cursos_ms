@@ -63,9 +63,11 @@ const resolvers = {
         prerequisito: async (_: any, args: {codigo_asignatura : number}, { dataSources } : {dataSources : dataSources}) => {
             const response = await dataSources.myDatabase.getPrerequisito(args.codigo_asignatura);
             //retunr error if response is empty
-            if (response.length === 0) {
-                throw new Error("No existe el prerequisito con el id " + args.codigo_asignatura);
-            }
+            return response;
+        },
+        asignaturas_habilitadas: async (_: any, args: {codigo_asignatura : number}, { dataSources } : {dataSources : dataSources}) => {
+            const response = await dataSources.myDatabase.getAsignaturasHabilitadas(args.codigo_asignatura);
+            //retunr error if response is empty
             return response;
         }
     }
