@@ -1,6 +1,5 @@
 import { SQLDataSource } from "datasource-sql";
 
-
 const MINUTE = 60 * 1000;
 
 export default class MyDatabase extends SQLDataSource {
@@ -62,9 +61,6 @@ export default class MyDatabase extends SQLDataSource {
     return this.knex.select("*").from("Facultad").where({ id_facultad });
   }
 
-  getFacultadesBySede(id_sede: number) {
-    return this.knex.select("*").from("Facultad").where({ id_sede });
-  }
 
   getPrerequisitos() {
     return this.knex.select("*").from("Prerequisito");
@@ -83,22 +79,33 @@ export default class MyDatabase extends SQLDataSource {
     return codes;
   }
 
-  // retorna una lista con las materias que abre una materia 
+  // retorna una lista con las materias que abre una materia
   async getAsignaturasHabilitadas(codigo_asignatura_prerequisito: number) {
-      const habilitadas = await this.knex
-        .select("*")
-        .from("Prerequisito")
-        .where({ codigo_asignatura_prerequisito });
-      //get the codes of the prerequisitos
-      const codes: Number[] = [];
-      habilitadas.forEach((habilitada) => {
-        codes.push(habilitada.codigo_asignatura);
-      });
-      return codes;
-    }
+    const habilitadas = await this.knex
+      .select("*")
+      .from("Prerequisito")
+      .where({ codigo_asignatura_prerequisito });
+    //get the codes of the prerequisitos
+    const codes: Number[] = [];
+    habilitadas.forEach((habilitada) => {
+      codes.push(habilitada.codigo_asignatura);
+    });
+    return codes;
+  }
+
+  async getAsignaturaByPrograma(id_programa: number) {
+    return this.knex.select("*").from("Asignatura").where({ id_programa });
+  }
+
+  async getFacultadesBySede(id_sede: number) {
+    return this.knex.select("*").from("Facultad").where({ id_sede });
+  }
+
+  async getProgramasByFacultad(id_facultad: number) {
+    return this.knex.select("*").from("Programa").where({ id_facultad });
+  }
+
 }
-
-
 
 // Language: typescript
 // Path: src\MyDatabase.ts

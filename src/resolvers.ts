@@ -69,6 +69,21 @@ const resolvers = {
             const response = await dataSources.myDatabase.getAsignaturasHabilitadas(args.codigo_asignatura);
             //retunr error if response is empty
             return response;
+        },
+        asignaturaByPrograma: async (_: any, args: {id_programa : number}, { dataSources } : {dataSources : dataSources}) => {
+            const response = await dataSources.myDatabase.getAsignaturaByPrograma(args.id_programa);
+            //retunr error if response is empty
+            return response;
+        },
+        facultadesBySede: async (_: any, args: {id_sede : number}, { dataSources } : {dataSources : dataSources}) => {
+            const response = await dataSources.myDatabase.getFacultadesBySede(args.id_sede);
+            //retunr error if response is empty
+            return response;
+        },
+        programasByFacultad: async (_: any, args: {id_facultad : number}, { dataSources } : {dataSources : dataSources}) => {
+            const response = await dataSources.myDatabase.getProgramasByFacultad(args.id_facultad);
+            //retunr error if response is empty
+            return response;
         }
     }
 }

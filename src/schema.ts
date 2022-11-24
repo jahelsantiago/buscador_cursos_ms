@@ -14,6 +14,7 @@ import { gql } from 'apollo-server'
   type Tipologia {
     id_tipologia: Int!
     nombre_tipologia: String!
+    asignaturas: [Asignatura]
   }
 
   type Prerequisito {
@@ -43,12 +44,15 @@ import { gql } from 'apollo-server'
   type Query {
     asignaturas: [Asignatura]
     asignatura(codigo_asignatura: Int!): Asignatura
+    asignaturaByPrograma(id_programa: Int!): [Asignatura]
     sedes: [Sede]
     sede(id_sede: Int!): Sede
     facultades: [Facultad]
     facultad(id_facultad: Int!): Facultad
+    facultadesBySede(id_sede: Int!): [Facultad]
     programas: [Programa]
     programa(id_programa: Int!): Programa
+    programasByFacultad(id_facultad: Int!): [Programa]
     tipologias: [Tipologia]
     tipologia(id_tipologia: Int!): Tipologia
     prerequisito(codigo_asignatura: Int!): [Int]

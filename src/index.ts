@@ -5,17 +5,16 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import MyDatabase from "./dataBaseManager";
 
-const ENVIROMENT = "devlopment"
+const DEVELOPMENT = true
 
-const host = ENVIROMENT === "devlopment" ? "localhost" : "host.docker.internal";
+const host = DEVELOPMENT  ? "localhost" : "host.docker.internal";
 const knexConfig = {
   client: 'mysql',
   connection: {
-    host :  host,
-    port : 3306,
-    user : 'admin',
-    password : '2022',
-    database : 'sia_asignaturas_db'
+    host :  "35.239.210.40",
+    user : 'root',
+    password : 'ZBEfzs97',
+    database : `sia_asignaturas_db`,
   }
 };
 
