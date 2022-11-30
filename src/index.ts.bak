@@ -11,9 +11,9 @@ const host = DEVELOPMENT  ? "localhost" : "host.docker.internal";
 const knexConfig = {
   client: 'mysql',
   connection: {
-    host :  "34.171.152.100",
+    host :  "35.239.210.40",
     user : 'root',
-    password : 'root',
+    password : 'ZBEfzs97',
     database : `sia_asignaturas_db`,
   }
 };
